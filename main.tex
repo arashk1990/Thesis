@@ -1,0 +1,44 @@
+\documentclass[11pt,final,oneside]{memoir}
+
+
+\input{thesis_layout.tex}
+
+\begin{document}
+\frontmatter
+\input{frontmatter.tex}
+
+\mainmatter
+
+\include{./chapter_1/chapter_1}
+
+\include{./chapter_1b/chapter_1b}
+
+\include{./chapter_2/chapter_2}
+
+\include{./chapter_3/chapter_3}
+
+\include{./chapter_4/chapter_4}
+
+\include{./chapter_6/chapter_6}
+
+\include{./chapter_7/chapter_7}
+
+
+% appendix section
+\appendix
+\include{./appendix/appendix_head}
+\include{./appendix/appendix_1}
+\include{./appendix/appendix_2}
+\include{./appendix/appendix_3}
+\include{./appendix/appendix_4}
+
+\backmatter
+
+\printbibliography[title=References]
+%\bibliography{bibliography}
+
+% \clearpage
+% \phantomsection\addcontentsline{toc}{chapter}{Curriculum Vitae}
+% \includepdf[pages=-,width=1.43\textwidth]{./frontmatter/cv.pdf}
+
+\end{document}

@@ -1,0 +1,54 @@
+\chapter{D-optimal design for Cox Proportional Hazards (CPH) model}
+\label{A:design}
+Schmidt~\textit{et al.}~\cite{schmidt2015optimal} proposed the D-Optimal design for a CPH with three covariates. In this section, we extend and generalize their formulation for cases where the number of covariates in the Hazards model can be more than 3. Cox proportional hazards model with fixed termination time $c$, is specified as: 
+\begin{linenomath}
+\begin{equation}
+    T_k \sim \exp\Big(\exp( \beta Z_k)\Big)
+\end{equation}
+\end{linenomath}
+where $T_k$ is the survival time for instance (participant) $k$, \(Z_k = \begin{bmatrix}
+1 & Z_{1k} & ... &Z_{ik}
+\end{bmatrix} \) is the vector of covariate values of instance k with first element added for the intercept, and $\mathbf{\beta}$ is the vector of parameters associated with $i$ independent variables. If the data are type I censored, meaning that the experiment stops at a predetermined time which is the case of our experiment, the Fisher information matrix is given by~\citep{konstantinou2014optimal}:
+\begin{linenomath}
+\begin{equation}
+\mathbf{I}(Z_k,\beta)=\Big(1- \exp (-c \exp(\beta Z_k ))\Big)Z_k Z_k^T
+\end{equation} 
+\end{linenomath}
+Suppose that we need to generate $m$  scenarios for the experiment, then
+\(
+\xi = \begin{bmatrix}
+\mathbf{S_1} & ... & \mathbf{S_m}\\
+\omega_1 &... & \omega_m
+\end{bmatrix}
+\) is the design of experiment where
+$\mathbf{S_m}$ represents the $m^{th}$ combination of all the independent variables and $(0\leq \omega_m \leq 1)$ is the associated weight, where $\sum_m\omega_m = 1$. For such model the information matrix will be:
+\begin{linenomath}
+\begin{equation}
+ \mathbf{M}(\xi, \mathbf{\beta}) = \sum_{j=1}^m \omega_j \mathbf{I}(\mathbf{S_j},\beta)
+\end{equation}
+\end{linenomath}
+Given $\beta$, $Z$, and $m$, we need to find a design $\xi_{\beta}^*$ that maximizes $\det (\mathbf{M}(\xi, \mathbf{\beta}))$. For a high number of independent variables, we can use Markov Chain Monte Carlo simulation for finding $\xi_{\beta}^*$. In particular, Simulated Annealing (SA) is a great candidate for such problems \citep{kirkpatrick1983optimization}. Using prior $\beta$ coefficients collected in our trial data collection, having all the possible levels of covariates, and setting the number of experiments to 90, we run a simulated annealing to maximize the determinant of Fisher information matrix of our design. Algorithm~\ref{sa} provides the pseudo-code for the simulated annealing we used in this study.
+\begin{algorithm}
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+Set $\beta := \beta_0$ \\
+Set total number of covariates $N_v$\\
+Set possible values that covariates can take $P$\\
+Set total number of experiments $N_e$ \\
+Select an initial random design $\xi = \xi_0$ and  weights $W = W_0$ based on $N_v$, $P$ \& $N_e$. \\
+Calculate $\det (\mathbf{M}(\xi_0, \mathbf{\beta}))$ and set $\xi_0$ and its weights as the best design ($\xi^*$,  $W^*$)\\
+Set maximum number of iterations $n$, initial temperature $T_0$ and temperature reduction rate $\alpha$\\
+$T = T_0$\\
+\For{$i\leftarrow 1$ \KwTo $n$}{
+\emph{select a neighbour design $\xi_n$ or neighbour weights ${W_n}$}\;
+\emph{\uIf {$\det (\mathbf{M}(\xi_{n}, \mathbf{\beta})) > \det(\mathbf{M}(\xi^{*}, \mathbf{\beta}))$} {$\xi^* = \xi_n \: \& \: W^*=W_n$}
+\Else{ $\Delta = \displaystyle \frac{(\det (\mathbf{M}(\xi^{*}, \mathbf{\beta})) - \det(\mathbf{M}(\xi_{n}, \mathbf{\beta})))}{\det (\mathbf{M}(\xi^{*},\mathbf{\beta})} $\\
+$H=exp(-\Delta/T)$\\
+\uIf{H $\geq $\text{U}(0,1)}{$\xi^{*} = \xi_n \: \& \: W^* = W_n$}}
+}
+\emph{$T = \alpha \times T$ }
+}
+Return $(\xi^{*}$, $W^*)$
+\caption{Pseudo-code for the simulated annealing algorithm}\label{sa}
+\end{algorithm}\DecMargin{1em}

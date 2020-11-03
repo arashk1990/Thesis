@@ -1,0 +1,199 @@
+% Packages
+
+% WiFi springer packages
+\usepackage{multirow,multicol}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{rotating}
+\usepackage{tikz}
+
+\usepackage{tabularx}
+\newcolumntype{b}{>{\hsize=.7\hsize}X}
+\newcolumntype{s}{>{\hsize=.3\hsize}X}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+
+
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\usepackage{array,calc}
+\newlength\Wlena \newlength\Wlenb \newlength\Wlenc \newlength\Wlend
+\settowidth{\Wlenb}{2-way \& median}
+\setlength{\Wlena}{\dimexpr0.5\Wlenb-\tabcolsep-\arrayrulewidth/2\relax}
+\setlength{\Wlenc}{\dimexpr1.5\Wlenb+\tabcolsep+\arrayrulewidth/2\relax}
+\setlength{\Wlend}{\dimexpr0.5\Wlenb+\tabcolsep+\arrayrulewidth/2\relax}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centered "p" column
+\newcommand\Wmcii[1]{\multicolumn{8}{P{\Wlend}|}{#1}}  % handy shortcut macros
+\newcommand\Wmciii[1]{\multicolumn{16}{P{\Wlenc}|}{#1}}
+%%%
+%%%
+%% VR wait
+
+\usepackage{booktabs}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{longtable}
+%% The amsthm package provides extended theorem environments
+%\usepackage[linesnumbered,ruled]{algorithm2e}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+\usepackage{array,calc}
+\usepackage{lscape}
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
+\usetikzlibrary{positioning}
+\newlength\lena \newlength\lenb \newlength\lenc \newlength\lend
+\settowidth{\lenb}{2-way with median}
+\setlength{\lena}{\dimexpr0.5\lenb-\tabcolsep-\arrayrulewidth/2\relax}
+\setlength{\lenc}{\dimexpr1.5\lenb+\tabcolsep+\arrayrulewidth/2\relax}
+\setlength{\lend}{\dimexpr0.5\lenb+\tabcolsep+\arrayrulewidth/2\relax}
+%\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centered "p" column
+\newcommand\mcii[1]{\multicolumn{10}{P{\lenb}|}{#1}}  % handy shortcut macros
+\newcommand\mciii[1]{\multicolumn{15}{P{\lenc}|}{#1}}
+\newcommand\mciiiii[1]{\multicolumn{6}{P{\lend}|}{#1}}
+\usepackage{adjustbox}
+
+\usepackage{array,calc}
+\usepackage{makecell}
+\newcommand{\note}[1]{
+\begin{boxitpara}{}%
+\textbf{\underline{Internal note}:} #1
+\end{boxitpara}}
+
+%Traj
+\newsavebox{\measurebox}
+
+
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[backend=biber,sorting=none,natbib=true,giveninits=true,maxbibnames=99,maxnames=2]{biblatex}
+%\usepackage[dvips]{graphicx}
+\usepackage{appendix}
+\usepackage{colortbl}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{tabu}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{tocloft}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+% package configurations
+\hypersetup{
+    breaklinks=true,colorlinks=true,
+    linkcolor=blue,urlcolor=blue,citecolor=blue
+}
+
+\captionsetup{%
+    % justification=raggedright,
+    justification=justified,
+    singlelinecheck=off,
+}
+
+\addbibresource{bibliography.bib}
+
+\newtheorem{exm}{Example}
+
+\newtheorem{lem}{Lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% left, right margins and textwidth %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlrmarginsandblock{1.5in}{1.5in}{*}
+
+%% for main body, bottom of text at 1in, footer below%% top of header at 1in, first text line double spaced%% below base of header
+\newlength{\linespace}
+\setlength{\linespace}{\baselineskip} % current equivalent of \onelineskip
+\setlength{\headheight}{\onelineskip}
+\setlength{\headsep}{\linespace}
+% \addtolength{\headsep}{-\topskip}
+% \setlength{\uppermargin}{1in}
+% \addtolength{\uppermargin}{\headheight}
+% \addtolength{\uppermargin}{\headsep}
+
+%% and for the bottom
+% \setlength{\lowermargin}{1in}
+% \setlength{\textheight}{\paperheight}
+% \addtolength{\textheight}{-\uppermargin}
+% \addtolength{\textheight}{-\lowermargin}
+
+%% footnote settings
+% \setlength{\footskip}{\onelineskip}
+% \setlength{\footnotesep}{\onelineskip}
+
+%% the fiddle lengths (..ta.. for title/approval page, others for prelims)
+% \newlength{\toptafiddle} \setlength{\toptafiddle}{2\linespace}
+% \newlength{\bottafiddle} \setlength{\bottafiddle}{0pt}
+% \newlength{\topfiddle}   \setlength{\topfiddle}{\toptafiddle}
+% \newlength{\botfiddle}   \setlength{\botfiddle}{\onelineskip}
+
+\setlength{\parindent}{2em}
+\checkandfixthelayout[nearest]
+
+\renewcommand*{\cftchapterfont}{\normalfont}
+\renewcommand*{\cftchapterpagefont}{\normalfont}
+\renewcommand*{\cftchapterleader}{%
+    \cftchapterfont\cftdotfill{\cftchapterdotsep}}
+\renewcommand*{\cftchapterdotsep}{\cftdotsep}
+
+%%% no extra space before the entry, or in the LoF/LoT
+\setlength{\cftbeforechapterskip}{0pt plus 0pt}
+\renewcommand*{\insertchapterspace}{}
+
+%%%%%%%%%%%%%%%%%
+%% Back matter %%
+%%%%%%%%%%%%%%%%%
+
+% \renewcommand*{\bibname}{References}
+% \setlength{\bibitemsep}{\onelineskip}
+% \renewcommand*{\biblistextra}{%
+%     \setlength{\itemsep}{\bibitemsep}
+%     \setlength{\labelwidth}{0pt}
+%     \setlength{\leftmargin}{3em}% hanging indent
+%     \setlength{\itemindent}{-\leftmargin}}
+
+%% endnotes
+\renewcommand*{\notesname}{Notes}
+\renewcommand*{\notedivision}{%
+    \AsuSpacing\chapter*{\notesname}
+    \addcontentsline{toc}{chapter}{\notesname}
+    \SingleSpacing}
+
+%%%%%%%%%%%%%%%%
+%% Title Page %%
+%%%%%%%%%%%%%%%%
+\setlength{\droptitle}{20pt}
+\newcommand{\statement}[1]{%
+\gdef\puB{#1}}\newcommand{\puB}{}
+\renewcommand{\maketitlehookd}{%
+    \vspace*{9em}\centering \puB}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% (subsub)section styles %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setsecnumdepth{subsection}
+\maxtocdepth{subsection}
+
+%%%%%%%%%%%%%%
+% TOC styles %
+%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+%% page styles %%
+%%%%%%%%%%%%%%%%%
+\pagestyle{ruled}
+\makeoddfoot{plain}{}{\thepage}{}
+\makeevenfoot{plain}{}{\thepage}{}
+\makeoddfoot{ruled}{}{\thepage}{}
+\makeevenfoot{ruled}{}{\thepage}{}
+\OnehalfSpacing

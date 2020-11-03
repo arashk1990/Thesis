@@ -1,0 +1,36 @@
+\section{Model Results}
+\label{S:D6}
+To capture changes in waiting time pattern across the three conditions, and also estimate the effects of generated variables on waiting time, cox proportional hazards model is adopted. It should be noted that, in addition to estimating a variable’s impact on waiting time, deviations of reasonable variables were evaluated and estimated through interaction variables, for example (Female) * (Maximum acceleration), (Female) * (Percentage of the time the head was oriented toward smartphone during waiting time), etc. Model specifications were calculated through a systematic process of removing statistically insignificant variables and combining variables when their effects were not significantly important. In safety analyses, survival analysis is the most common practice in modelling. In this study, we fit multivariate cox proportional hazards model to analyze the joint impact of factors on survival time. To better fit the model, dummy variables in different ranges were created for continuous variables. Each variable is categorized in two or three groups, based on the distribution of the variable. Category thresholds were set in a way that each group contains at least 25 percent of participants. Crossings with a PET of less than 1.5 seconds were considered as dangerous or unsafe~\cite{zaki2016exploring}. \cref{tab:D2} provides estimated parameters of the significant covariates. The first column in this table presents variables that appeared to be significant. It should be noted that a positive coefficient sign means that the chance of starting a cross is higher, and thus, waiting time is shorter. The hazards ratio greater than one, indicates that as the value of the variable increases, the event’s hazards increases and thus waiting time decreases.
+
+\begin{table}
+\caption{Results of multivariate proportional hazards model}
+\scalebox{0.82}{
+\begin{tabular}{|l|l|lll|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Variable}}                                                           & \textbf{Coefficient} & \textbf{Hazards Ratio} & \textbf{p-value} \\ \hline
+\multirow{2}{*}{Task}                                                                   & 2       & 3.08                 & 21.86                 & 0.001            \\ \cline{2-5} 
+                                                                                        & 3       & 2.93                 & 18.82                 & 0.001            \\ \hline
+Female                                                                                  & General & -0.55                & 0.58                  & 0.118            \\ \hline
+Initial walk speed > 1.9 m/s                                                            & General & 0.33                 & 1.38                  & 0.121            \\ \hline
+\multirow{2}{*}{\begin{tabular}{l}
+     \% of time head was oriented toward \\
+     smartphone during waiting time >85\%
+\end{tabular} } & General & -1.16                & 0.20                  & 0.001            \\ \cline{2-5} 
+                                                                                        & Task 2  & -0.96                & 0.38                  & 0.012            \\ \hline
+\begin{tabular}{l}
+       \% of time head was oriented toward\\
+      smartphone during crossing > 85\%
+\end{tabular}                      & General & 0.68                 & -1.97                 & 0.009            \\ \hline
+\multirow{4}{*}{Minimum gap missed > 3.1 s}                                             & General & 2.64                 & 14.01                 & 0.001            \\ \cline{2-5} 
+                                                                                        & Task 1  & 1.42                 & 4.17                  & 0.001            \\ \cline{2-5} 
+                                                                                        & Task 2  & 1.57                 & 4.83                  & 0.001            \\ \cline{2-5} 
+                                                                                        & Task 3  & 1.16                 & 3.21                  & 0.028            \\ \hline
+Crossing time > 5 s                                                                     & Task 1  & -0.98                & 0.37                  & 0.089            \\ \hline
+PET < 1.5 s                                                                             & Task 1  & 1.08                 & 2.94                  & 0.002            \\ \hline
+\multirow{2}{*}{Maze solving time > 1.1 s}                                              & Task 2  & -1.21                & 0.30                  & 0.003            \\ \cline{2-5} 
+                                                                                        & Task 3  & -2.27                & 0.10                  & 0.001            \\ \hline
+\end{tabular}}
+\label{tab:D2}
+\end{table}
+
+ As it can be seen in \cref{tab:D2}, the Task variable presents the differences of waiting time for Tasks 2 and 3 and Task 1. The positive value of this variable shows that waiting time in the tasks with smartphone involved is less than waiting time for non-distracted Task 1, meaning that smartphone usage has resulted in less waiting on the sidewalk, but the LED treatment has smoothed this negative impact. The second variable which has a significant effect on pedestrians’ waiting time at an unsignalized intersection is gender with a negative impact for males. However, gender is not significant for separate tasks, implying that smartphone distraction does not change the behaviour of waiting time for any gender. Additionally, results show that pedestrians with higher crossing speeds (i.e. more rush to cross) waited less on the sidewalk. Analysing the distraction parameters values in \cref{tab:D2} (i.e. head orientations toward phone while either waiting on the sidewalk or crossing a street) indicates that distracted pedestrians while waiting, spend more time on the sidewalk before initiating a cross, especially when there is no LED safety treatment implemented. On the other hand, distracted pedestrians, even while crossing the street, waited less at the sidewalk. Gap times that participants missed before crossing is reflected in the minimum gap missed variable. In general, in all three waiting tasks, longer gap times have led to less waiting time. In task 1, more crossing duration means more waiting time, but this is not necessarily true for Tasks 2 and 3. In Tasks 2 and 3, in which participants are distracted with their phones, crossing duration may increase due to smartphone usage while crossing. Dangerous crossing, i.e. PET below 1.5 seconds, has a significant effect on pedestrians’ waiting time for Task 1. Individuals with safer crossing tend to wait longer in task 1. However, this variable is removed in Task 2 and Task 3, which may be because of longer waiting times due to phone usage, instead of waiting for safe gaps. In the end, for each participant, as the time it takes to solve a maze increases, waiting time increases as well. This may be linked to the lack of concentration on road crossing on those participants who solve the maze faster.

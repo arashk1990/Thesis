@@ -1,0 +1,20 @@
+\section{Model Structure}
+\label{S:D4}
+Developed by Cox in 1972, Cox proportional-hazards model is essentially a regression model mainly used in medical research to identify the relationship between survival times of patients and predictor variables~\cite{therneau2000cox}. In this study, hazard function, denoted by $\xi(t)$, is defined as the rate of failure to initiate a cross at time t. Hazard function is written as:  
+\begin{equation}
+    \label{eq:haz}
+    \xi(t) = \frac{\lim Pr[t\leq T \leq t+ \Delta (t)|t \leq T]}{\Delta t}	 
+\end{equation}
+
+To analyze waiting time before a cross, cox proportional hazard model is used, as the most common method for analyzing individuals’ survival. Considering the effects of covariates on the baseline hazard, hazard function is written as:
+\begin{equation}
+    \label{eq:cph}
+     \xi(t|R) =  \Bar{\xi}(t) \exp({\displaystyle \sum_{i=1}^{k} \chi_i R_i})
+\end{equation}
+In Equation~\ref{eq:cph}, $R$ is the vector of covariates, $\chi$ is the vector of coefficients that need to be estimated, and ($\Bar{\xi}(t)$ is the baseline hazard~\cite{hamed2001analysis}. Equation~\ref{eq:cph} gives the risk at time $t$ for pedestrian $i$, where the baseline hazard expresses hazard or risk for a pedestrian at all time points regardless of the covariates $(R=0)$. To estimate model parameters, partial derivatives of the log-likelihood function is taken. As all the pedestrians finally cross the street at some point, our sample data is considered to be uncensored. To estimate parameters of the model, package “survival” in R is used in this study~\cite{survival-package}.
+
+
+
+
+
+

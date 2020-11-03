@@ -1,0 +1,50 @@
+\section{Results and Analysis}
+\label{S:T5}
+\subsection{Implementation Notes}
+All data pre-processing and model development are coded in Python programming language, using Keras library and its implementation of TensorFlow with GPU support. After data preparation, an exhaustive grid search is conducted to find the best network configurations. Dropout layers and their rates, number of nodes (neurons) in each hidden layer, batch size, number of hidden LSTM and dense layers, is configured based on a 8-fold cross-validation over 200 epochs, and the best configurations are selected. Models are trained on a Core i7 4GHz CPU and a 16.0 GB memory.  
+\subsection{Baseline Model}
+A Vanilla LSTM model is used as the base-line model to compare the performance of Aux-LSTM model. All the configuration set-up procedures for the base-line model are followed similar to the Aux-LSTM model. Comparison of the models is done based on the error on validation tests, for configuration setups, and test sets, for model performances. Error used in this study is defined as euclidean distance between predicted and and ground-truth coordinates.  
+\subsection{Results}
+The initial results of our Aux-LSTM models and their comparison to the baseline model is provided in this section. In table~\ref{tab:Tacc}, configurations of top 2 Vanilla and Aux-LSTM models as well as their cross-validated error over 200 epochs are provided. 
+
+
+\begin{table}[ht]
+
+    \caption{Mean error (in meters) of 8-fold cross-validation for parameter configuration over 200 epochs}
+    \centering
+    \small\addtolength{\tabcolsep}{-3pt}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|}
+    \hline
+       \textbf{ID} & \textbf{Model} & \textbf{Batch Size} & \textbf{Dropout \%} & \textbf{\# Nodes} & \textbf{\# LSTM} & \textbf{\# Dense}  & \textbf{Error} \\
+       \hline
+    
+         \textbf{1} & Vanilla & 32 & 0.2 & 50 & 2 & NA & 0.44 \\
+         \textbf{2} & Vanilla & 32 & 0.0 & 50 & 1 & NA & 0.39\\
+         \textbf{3} & Aux-LSTM & 32 & 0.2 & 100 & 2 & 2 & 0.31\\
+         \textbf{4} & Aux-LSTM & 32 & 0.2 & 50 & 3 & 2 & 0.29\\
+    \hline
+    \end{tabular}
+    \label{tab:Tacc}
+\end{table}
+As it can be inferred from Table~\ref{tab:Tacc}, Aux-LSTM model outperforms baseline models, i.e. Vanilla LSTM, in the accuracy. Moreover, using aux LSTM, models with more number of hidden layers, either LSTM layers or dense layers, are the better performing models. In the grid search of the hyper parameters, batch sizes of 32 and 64, dropout rates of 0, 0.2 and 0.5, number of nodes of 50 and 100, number of hidden LSTM layers of 1, 2, and 3 and number of hidden dense layers of 1, 2, 3 are tested. A more detailed hyperparameter search including the proportion of input data to output data and more number of hidden layers will be tested and presented in the presentation. Moreover, the importance of adding auxiliary variables and their effects on the results will be discussed. \\
+These top models are then selected to be applied to test dataset, which consists of 20\% of all the data and is not used in model training. The errors of applying the models on test set over 1000 epochs is provided in Table~\ref{tab:Ttest}.
+
+\begin{table}[!h]
+
+    \caption{Mean error (in meters) of test set for selected models over 1000 epochs}
+    \centering
+    \small\addtolength{\tabcolsep}{-3pt}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+       \textbf{ID} & \textbf{Model Type} & \textbf{Val Error (m)} & \textbf{Test Error (m)} \\
+       \hline
+    
+         \textbf{1} & Vanilla & 0.20 & 0.25\\
+         \textbf{2} & Vanilla & 0.18 & 0.28 \\
+         \textbf{3} & Aux-LSTM & 0.12 & 0.17 \\
+         \textbf{4} & Aux-LSTM & 0.11 & 0.15 \\
+    \hline
+    \end{tabular}
+    \label{tab:Ttest}
+\end{table}
+As it can be seen in Table~\ref{tab:Ttest}, Aux-LSTM models outperform Vanilla LSTM networks by reducing error of trajectory prediction by 0.1 meters (40\% improvement in accuracy). Comparing the performance of models 3 and 4, we can observe that aux-LSTM has performed better with higher number of hidden layers, which can be due to the model's capability of capturing higher level correlations among the data.  
