@@ -15,7 +15,7 @@ Accuracy of ResNet34 on training set and validation set for all configurations, 
 \begin{table*}[t]
     \caption{Different ResNet34 Configurations}
     \centering
-    \scalebox{0.7}{
+    \scalebox{0.78}{
     \small\addtolength{\tabcolsep}{-4pt}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
     \hline
@@ -52,7 +52,7 @@ To further investigate configurations, training run times are compared. As it is
     \label{fig:epoch}
 \end{figure}
 \begin{center}
-\begin{table*}[ht]
+\begin{table*}
 \caption{Parameters of core ResNet architecture, values in () are for naming purposes}
 \scalebox{0.85}{
 \setlength\extrarowheight{2pt}
@@ -77,6 +77,7 @@ Dropout Layer & \Wmciii{No (0)} & \Wmciii{Yes (1)}  \\
  Compared to plain non-residual architectures, all ResNet-based architectures showed significantly better performances than plain 34-layer MLP. A low accuracy of 56\% is achieved by using a deep non-residual network with 34 layers, which shows the power of adding identity shortcut connections to the network. \cref{fig:results2} depicts the accuracy of different architectures for models with a two-layer building block and three-layer blocks are compared.  As it can be inferred from the figures, performance of ResNet MLP architectures in a supervised manner, i.e. a sample rate of 0\%, appears not to be improving while increasing the number of hidden layers. ResNet18 for instance performs better than its deeper counterpart, ResNet32, for 2-layer building block models. Similarly, ResNet74 performs better than ResNet101 and ResNet122. However, adding the pseudo-label algorithm with a sample rate of 20\% results in a better performance of deeper networks. Specifically, for networks with more building blocks, improvement in performance using pseudo-labels appears to be more significant. For ResNet122 for instance, the accuracy increases by around 5\% with 20\% sample rate of pseudo-labels, whereas for ResNet10, the increase is less than 1\%, and for ResNet18, semi-supervised learning does not help to improve the performance. It can be concluded that having more building blocks, in general, tends to cause more overfitting, which is addressed by adding pseudo-labelled data to the model. 
  
  For sample rates greater than 20\%, the fluctuations in the accuracy increases and does not follow a predictable trend. Thus, sample rate of 20\% is selected as the optimum number for pseudo-labelling. On the other side, performance of the model in the deepest architecture, ResNet152 starts decreasing compared to ResNet122, which made us stop adding more hidden layers to the architecture. In conclusion, ResNet122 with a sample rate of 20\% is selected as the best model for classifying mode of transport using collected Wi-Fi data. Regarding the training time of the selected framework, a 10-fold cross-validation on the model takes around 4 hours to run, meaning an estimated average of 24 minutes per classifier.
+ \clearpage
 \begin{figure}[!ht]
   \centering
   \begin{tabular}{@{}c@{}}
@@ -99,7 +100,7 @@ Dropout Layer & \Wmciii{No (0)} & \Wmciii{Yes (1)}  \\
 The highest accuracy of the model, as it is depicted in \cref{fig:results2} is achieved in ResNet122 with a sample rate of 20\%. With an 84.1\% accuracy in 10-fold cross-validation, the model outperforms all the other architectures, supervised and semi-supervised, residual and non-residual. In \cref{tab:ConMat}, confusion matrix of this architecture is depicted based on a test set. Recall and precision of each mode of transport in confusion matrix are estimated based on a 20\% sample of labelled data, which was not used in the training procedure. Test set includes 170 rows of labelled data, including 43 walking, 41 biking and 86 driving trips. As provided in the table, the model successfully predicts all three modes of transportation with an precision of over 80\%. Among modes, driving has the most accurate recall and precision, despite the fact that both data collection experiments are conducted in congested urban areas, where the speed of vehicles are not significantly higher than bikes and pedestrians. Unlike commonly used mode classification methods which rely merely on features such as speed to distinguish trips, our model has benefited from higher level features with the help of very deep residual networks.
 
 The lowest precision in the confusion matrix belongs to bikes. Biking and driving modes share many similar features, particularly in congested urban areas with signalized intersections. Thus, relatively low precision of biking can be explained. As it can be seen in \cref{tab:ConMat}, 8 driving trips that are incorrectly predicted as biking, play the main role in low accuracy of biking. These 8 trips consist less than 10\% of the driving trips. 
-\begin{table}[!ht]
+\begin{table}
 \centering
 \caption{Confusion Matrix of ResNet122 with 20\% sample rate} 
 \small

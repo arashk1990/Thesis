@@ -1,4 +1,4 @@
-\chapter{Behavioural modelling of pedestrian movement using novel data sources and machine learning}
+\chapter{Behavioural modelling of pedestrian movement using novel data sources and interpretable machine learning}
 \label{chap6}
 \chaptermark{Interactions of Pedestrians and Automated Vehicles: Trajectory}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
@@ -6,15 +6,15 @@
 \pagebreak
 
 \section*{Preamble}
-This chapter features another aspect of the pedestrian crossing behaviour in automated environments of future urban space: trajectory. Utilizing data retrieved from the same virtual reality experiment described in the previous chapter, data-driven time-series models are developed to predict the trajectory of pedestrians while crossing roads confronting automated vehicles. The model uses the initial movements of pedestrians, as well as their head orientations and distance to the coming vehicle as input, and merges them with contextual information of the environment to predict the location of the next steps of pedestrians. All the input to the models are set in a way that can be captured by a hypothetical automated vehicles, making it possible to predict the movements of pedestrians based on the information that are available to a typical automated vehicle. This chapter also include an extensive review of the available open-source datasets related to real test automated vehicles on the roads, and discusses their drawbacks and advantages from a pedestrian-oriented point of view.
+This chapter features another aspect of the pedestrian crossing behaviour in automated urban environments, i.e. trajectory. Utilizing the data retrieved from the same virtual reality experiment described in the previous chapter, data-driven time-series models are developed to predict the trajectory of a pedestrian, while crossing roads with automated vehicles. The model uses the initial movement of a pedestrian, as well as their head orientations and distance to the incoming vehicle as inputs, and merges them with contextual information of the environment to predict the location of the next steps of pedestrians. All the inputs to the model are set in a way that they can be captured by a hypothetical automated vehicles, making it possible to predict the movement of a pedestrian based on the information that are available to a typical automated vehicle. This chapter also includes an extensive review of the available open-access datasets related to testing of automated vehicles on the roads, and discusses their drawbacks and advantages from a pedestrian-oriented point-of-view in data collection.
 
 \vspace{1em}
 \noindent
-This research article is under review in \textit{Transportation Research Part C: Emerging Technologies}
+This research article is to be submitted to \textit{Transportation Research Part C: Emerging Technologies} for review.
 \clearpage
 
 \section*{Abstract}
-
+With the unprecedented shift in recent years toward automated urban environments, a new paradigm is required to study the  pedestrian behaviour. Studying pedestrian behaviour in futuristic scenarios requires modern data that considers both the automated vehicle and pedestrian perspectives. Current open datasets on automated vehicles mainly fail to account for the latter and do not include an adequate number of events that involve pedestrian and vehicle interactions. To address this issue, we propose using virtual reality data as a complementary resource to current datasets, which can be designed to measure the pedestrian behaviour under specific conditions. In this research, we focus on pedestrian trajectory prediction at mid-block unsignalized crossings and in the presence of automated vehicles. For this purpose, we develop a novel multi-input network of Long Short-Term Memory (LSTM) and fully connected dense layers. In addition to past trajectories, the proposed framework incorporates head orientations of pedestrians and their distance to the upcoming vehicles as sequential input data. By merging the sequential data with contextual information of the environment, we train a model to predict the future trajectory of the pedestrian. Our results show that the prediction error and overfitting to the training data are reduced by considering contextual information in the model. By implementing a game theory-based model interpretability method, we provide detailed insights and propose suggestions to improve currently available automated vehicle datasets from a pedestrian-oriented point-of-view. 
 \clearpage
 
 \input{./chapter_6/section_1}

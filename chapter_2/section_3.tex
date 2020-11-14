@@ -1,4 +1,4 @@
-\section{Case Study}
+\section{Case study}
 \label{S:w4}
 We used \textit{URBANFlux system} that consists of a network of Wi-Fi detectors called OD\_Pods \cite{farooq2015ubiquitous} to record MAC addresses, signal strengths and times of connection for individual devices on four urban roads within the study area (\cref{fig:odloc}). Coverage zone of each OD\_Pod can be approximated as a sphere with a radius of 50 meters. We collected the Wi-Fi signals from different smartphones on two separate days. The first wave of data collection was done on Wednesday, June 15, 2017, from 10 A.M. to 1 P.M. in a congested area in downtown Toronto. In order to increase the size of the data, and reduce human and experimental errors, the second round of data collection was done in the same area on Wednesday, August 22, 2018, from 10 A.M. to 1 P.M.
 
@@ -16,7 +16,7 @@ In both data collection rounds, a congested area in downtown Toronto were select
 \subsection{Data Collection}
 To collect labelled data, four volunteers were assigned a mode of transportation, each going around the designated loop for 10 rounds. Volunteers were selected from our lab members, with different age categories, one female and three males, to account for heterogeneity of the data. All phones used by participants were using Android OS, including one Samsung J5, two Huawei P10 plus and one Google Pixel 2. MAC address of participants' devices are recorded by \emph{URBANFlux system}. Modes are assigned to each participant in a way to resemble the actual share of different modes in downtown Toronto. To do so, the shares of walking, biking and driving trips are set to be approximately 25\%, 25\%, and 50\%. Data recorded from movements between each two OD\_Pods are considered as a trip with their respective mode. In addition, OD\_Pods automatically track MAC addresses of all Wi-Fi enabled devices moving in the area. MAC addresses different than those of the participants, which were recorded by at least two independent OD\_Pods during the experiment, were considered as the unlabelled trips. \cref{tab:Total} represents the total number of trips for each mode, along with unlabelled trips.
 
-\begin{table}[ht]
+\begin{table}
 \centering
 \label{tab:Tripsum}
 \caption{Total number of trips collected for each mode}
@@ -50,7 +50,7 @@ All the data from different OD\_Pods are merged together. By having MAC addresse
 \begin{table}
 
 \caption{Details of variables defined for classification}
-
+\scalebox{0.96}{
 \begin{tabularx}{\textwidth}{|c|s|c|b|}
 \hline
     {\textbf{ID}} & {\textbf{Variable}}& {\textbf{Unit}}& {\textbf{Description}}
@@ -89,7 +89,7 @@ All the data from different OD\_Pods are merged together. By having MAC addresse
 {13} &        Signal 2nd Derivative: origin & \(\displaystyle dBm/s^2\)& 2nd derivative of the signal strengths of the connections to the origin OD\_Pod.  \\\hline
 {14} &        Signal 2nd Derivative: destination  & \(\displaystyle dBm/s^2\)& 2nd derivative of the signal strengths of the connections to the destination OD\_Pod. \\\hline
 {15} &        Signal 2nd Derivative: average & \(\displaystyle dBm/s^2\)  & Average of rows 13 and 14.   \\\hline
-\end{tabularx} 
+\end{tabularx} }
 \label{tab:var}
 \end{table}
 %\end{landscape}
